@@ -55,12 +55,15 @@ function Title ()
 {
   return (
     <div className='flex-1 min-h-screen flex justify-center items-center'>
-      <div className="flex flex-col items-center font-bold text-8xl gap-32">
+      <div className="flex flex-col items-center font-bold gap-32">
         <div className='flex flex-col items-center'>
-          <div>Volfram Studio</div>
+          <div className='text-4xl sm:text-6xl md:text-7xl xl:text-8xl'>Volfram Studio</div>
           <div className='font-bold text-3xl text-gray-500'>building a new ecosystem</div>
         </div>
         <AppPreview/>
+        <button className='bg-gray-200 px-4 py-2 rounded-full hover:bg-gray-300 transition-all ease'>
+          See more
+        </button>
       </div>
     </div>
   )
@@ -75,6 +78,11 @@ function AppPreview ()
       <AppIcon src='' alt='Crow' color='bg-[#404040]'/>
       <AppIcon src='' alt='Buho' color='bg-[#B5CDAD]'/>
       <AppIcon src='' alt='Longshot' color='bg-[#FF8787]'/>
+      <AppIcon src='' alt='Pulpo' color='bg-[#c09ef7]'/>
+      <AppIcon src='' alt='Husky' color='bg-gray-200'/>
+      <AppIcon src='' alt='Convivencia' color='bg-[#f2c299]'/>
+      <AppIcon src='' alt='-' color='bg-[#EEE]'/>
+      <AppIcon src='' alt='-' color='bg-[#EEE]'/>
     </section>
   )
 }
@@ -82,7 +90,7 @@ function AppPreview ()
 function Details()
 {
   return (
-    <section className='rounded-lg bg-gray-100 p-10 flex flex-col gap-8'>
+    <section className='rounded-lg bg-gray-100 p-10 flex flex-col gap-8 mb-20'>
       <DetailsEntry 
         title='Kodkod'
         color='bg-[#FFE49D]'
@@ -107,6 +115,21 @@ function Details()
         title='Longshot'
         color='bg-[#FF8787]'
         description='Cross platform note taking app with markdown support, code highlighting, custom fonts, custom background colors, cloud sync, plug-in support, drawing, stylus support, and more.'
+      />
+      <DetailsEntry 
+        title='Pulpo'
+        color='bg-[#c09ef7]'
+        description='Open source alternative to Astropad Studio. Allows you to use your iPad as a drawing tablet for your computer. Supports Windows, Mac, and Linux.'
+      />
+      <DetailsEntry 
+        title='Husky'
+        color='bg-gray-200'
+        description='Debate-focused app.'
+      />
+      <DetailsEntry 
+        title='Convivencia'
+        color='bg-[#f2c299]'
+        description='Activity tracker for better coexistence with roommates and family members'
       />
     </section>
   )
