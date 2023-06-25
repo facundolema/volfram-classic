@@ -11,7 +11,7 @@ export default function Home() {
                 <div>
                     Lorem ipsum, dolor sit amet consectetur adipisicing elit. Harum ullam amet commodi maiores consequatur ex qui quod impedit veniam vitae, ut atque deleniti fugit itaque facere sint quisquam ducimus dolorem.
                 </div>
-                <Link className='bg-gray-200 px-4 py-2 rounded-full hover:bg-gray-300 transition-all ease' href="/team/facundoelema">
+                <Link className='bg-gray-200 px-4 py-2 rounded-full hover:bg-gray-300 transition-all ease' href="/team/facundolema">
                     See more
                 </Link>
             </div>
