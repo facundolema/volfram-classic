@@ -1,53 +1,17 @@
+'use client'
+
 import Image from 'next/image'
 import Link from 'next/link';
+import { motion, stagger } from 'framer-motion';
+
+import AnimatedText from '../components/AnimatedText';
+
 
 export default function Home() {
   return (
-    <main className="flex flex-col h-screen font-bold text-gray-800
-        lg:w-3/4 sm:w-full m-auto px-10">
-        <NavBar/>
+    <main className="flex flex-col h-screen font-bold text-gray-800">
         <Title/>
-        <Details/>
     </main>
-  )
-}
-
-
-function AppIcon (
-  { src, alt, color } :
-  { src: string; alt: string, color: string } )
-{
-  return (
-    <div className='flex flex-col justify-center items-center gap-2'>
-      <div className={`h-20 w-20 ${color} rounded-[1rem]`}/>
-      <div className='text-sm'>{alt}</div>
-    </div>
-  )
-}
-
-function NavLink (
-  { href, label } :
-  { href: string; label: string })
-{
-  return (
-    <Link
-    href={href}
-    className='group transition-all duration-300 ease-in-out'>
-    <span className="bg-left-bottom bg-gradient-to-r from-gray-800 to-gray-800 bg-[length:0%_2px] bg-no-repeat group-hover:bg-[length:100%_2px] transition-all duration-500 ease-out">
-      {label}
-    </span>
-  </Link>
-  )
-}
-
-function NavBar ()
-{
-  return (
-    <nav className="flex justify-between py-4">
-      <NavLink href="/projects" label='Projects'/>
-      <NavLink href="/about" label='About Us'/>
-      <NavLink href="/team" label='Team'/>
-    </nav>
   )
 }
 
@@ -57,17 +21,72 @@ function Title ()
     <div className='flex-1 min-h-screen flex justify-center items-center'>
       <div className="flex flex-col items-center font-bold gap-32">
         <div className='flex flex-col items-center'>
-          <div className='text-4xl sm:text-6xl md:text-7xl xl:text-8xl'>Volfram Studio</div>
-          <div className='font-bold text-3xl text-gray-500'>building a new ecosystem</div>
+          <motion.div
+            initial={{ translateY: 0 }}
+            animate={{ translateY: -200 }}
+            transition={{ duration: .5, delay: 2, ease: 'easeInOut' }}
+          >
+            <AnimatedText text="Volfram Studio" classes="text-[10vw] xl:text-[8vw]"/>
+          </motion.div>
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: .5, delay: 2.5, ease: 'easeInOut' }}
+          >
+          </motion.div>
+          <Sec sections={["dev", "dev", "design"]} classes=""/>
+          {/*<AnimatedText text="building an ecosystem" classes="font-bold text-3xl text-gray-500"/>*/}
         </div>
-        <AppPreview/>
-        <button className='bg-gray-200 px-4 py-2 rounded-full hover:bg-gray-300 transition-all ease'>
-          See more
-        </button>
       </div>
     </div>
   )
 }
+
+function Sec(
+  { sections, classes } :
+  { sections: string[]; classes: string }
+) {
+  const titleVariants = {
+    initial: { opacity: 0 },
+    animate:
+    {
+      opacity: 1,
+      transition: { duration: 0.8, staggerChildren: 0.5, delayChildren: 3 },
+      delay: 3,
+    },
+  }
+
+  const letterVariants = {
+    initial: { opacity: 0, translateY: -200 },
+    animate: { opacity: 1, translateY: -200 },
+  }
+
+  return (
+    <motion.h1 initial="initial" animate="animate" variants={titleVariants}
+      className='flex flex-row gap-4'
+    >
+      {sections.map((section, index) => (
+        <motion.span
+          key={index}
+          variants={letterVariants}
+          style={{ display: 'inline-block' }}
+          className={classes}
+        >
+          <div className="border-2 border-gray-200 w-64 aspect-[16/11] rounded-[1rem]">
+            <Image
+              src={`/${section}.jpg`}
+              alt="dev"
+              layout="fill"
+              style={{ border: '1px solid #000', objectFit: 'cover', borderRadius: '1rem' }}
+            />
+
+          </div>
+        </motion.span>
+      ))}
+    </motion.h1>
+  )
+}
+
 
 function AppPreview ()
 {
