@@ -237,28 +237,22 @@ export default function Home() {
   )
 }
 
-function ListItem({IconElement, label}) {
+function ListItem (
+  { IconElement, label } :
+  { IconElement: React.ComponentType<any>, label: string } )
+{
   return (
-  <div style={{display: "flex", gap: "0.5rem", alignItems: "center", width: "50%", margin: "2px 0"}}>
-    <IconElement size={24} />
-    <div>{label}</div>
-  </div>
+    <div style={{display: "flex", gap: "0.5rem", alignItems: "center", width: "50%", margin: "2px 0"}}>
+      <IconElement size={24} />
+      <div>{label}</div>
+    </div>
   );
 }
 
-function BigListItem({IconElement, label}) {
+function List({children} : {children: React.ReactNode}) {
   return (
-  <div style={{display: "flex", flexDirection: "column", gap: "0.5rem", alignItems: "center"}}>
-    <IconElement size={96} />
-    <div>{label}</div>
-  </div>
-  );
-}
-
-function List({children}) {
-  return (
-  <div style={{display: "flex", flexWrap: "wrap", marginBottom: "1rem"}}>
-    {children}
-  </div>
+    <div style={{display: "flex", flexWrap: "wrap", marginBottom: "1rem"}}>
+      {children}
+    </div>
   );
 }
